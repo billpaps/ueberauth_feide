@@ -1,6 +1,6 @@
 defmodule Ueberauth.Strategy.Feide.OAuth do
   @moduledoc """
-  An implementation of OAuth2 for GitHub.
+  An implementation of OAuth2 for Feide.
 
   To add your `:client_id` and `:client_secret` include these values in your
   configuration:

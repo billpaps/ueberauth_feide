@@ -97,7 +97,12 @@ defmodule Ueberauth.Strategy.Feide do
       |> with_state_param(conn)
       |> with_redirect_uri(conn)
       |> Keyword.update!(:redirect_uri, fn uri ->
-        String.replace_prefix(uri, "http://", "https://")
+        redirect_ssl? = Keyword.get(conn :redirect_ssl?, true)
+        if redirect_ssl? do
+          String.replace_prefix(uri, "http://", "https://")
+        else
+          uri
+        end
       end)
 
     module = option(conn, :oauth2_module)
